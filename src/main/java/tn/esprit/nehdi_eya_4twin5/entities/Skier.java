@@ -1,8 +1,6 @@
 package tn.esprit.nehdi_eya_4twin5.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -10,9 +8,12 @@ import java.time.LocalDate;
 @Table(name = "t_skier")
 public class Skier {
     @Id
-    private int idSkier;
-    private String name;
-    private LocalDate birthDate;
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long numSkier;
+    private String firstName;
+    private String lastName;
+    private LocalDate dateOfBirth;
+    private String city;
 
 
 
