@@ -2,6 +2,8 @@ package tn.esprit.nehdi_eya_4twin5.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class Course {
     @Id
@@ -17,6 +19,9 @@ public class Course {
 
     private float price;
     private int timeSlot;
+    @OneToMany(mappedBy = "course")
+    Set<Registration> registrations;
+
 
 
 }

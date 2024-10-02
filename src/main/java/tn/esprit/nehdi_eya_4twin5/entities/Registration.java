@@ -1,9 +1,6 @@
 package tn.esprit.nehdi_eya_4twin5.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Registration {
@@ -11,4 +8,9 @@ public class Registration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numRegistration;
     private int numWeek;
+    @ManyToOne
+    Skier skier;
+
+    @ManyToOne
+    Course course;
 }
