@@ -1,24 +1,30 @@
 package tn.esprit.nehdi_eya_4twin5.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.Set;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long numCourse;
-    private int level;
+     Long numCourse;
+     int level;
 
     @Enumerated(EnumType.STRING)
-    private TypeCourse typeCourse;
+     TypeCourse typeCourse;
 
     @Enumerated(EnumType.STRING)
-    private Support support;
+     Support support;
 
-    private float price;
-    private int timeSlot;
+     float price;
+     int timeSlot;
     @OneToMany(mappedBy = "course")
     Set<Registration> registrations;
 
