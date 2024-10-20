@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 @Getter
 @Setter
@@ -11,7 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class Subscription {
+public class Subscription implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      Long numSub;

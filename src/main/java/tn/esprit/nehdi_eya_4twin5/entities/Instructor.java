@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Set;
 @Getter
@@ -12,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class Instructor {
+public class Instructor implements Serializable {
   @Id
      Long numInstructor;
    String firstName;

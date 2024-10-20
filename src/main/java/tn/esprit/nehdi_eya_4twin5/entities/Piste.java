@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Set;
 @Getter
 @Setter
@@ -12,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class Piste {
+public class Piste implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      Long numPiste;
