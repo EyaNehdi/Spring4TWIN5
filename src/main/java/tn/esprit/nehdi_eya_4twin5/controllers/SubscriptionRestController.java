@@ -21,7 +21,7 @@ public class SubscriptionRestController {
     }
 
     @GetMapping("/get/{numSubscription}")
-    public Subscription getSubscription(Long numSubscription) {
+    public Subscription getSubscription(@PathVariable Long numSubscription) {
         return subscriptionServices.retrieveSubscription(numSubscription);
     }
 
@@ -35,8 +35,8 @@ public class SubscriptionRestController {
         return subscriptionServices.updateSubscription(subscription);
     }
 
-    @DeleteMapping("/delete")
-    public Subscription deleteSubscription(Long numSubscription) {
+    @DeleteMapping("/delete/{numSubscription}")
+    public Subscription deleteSubscription(@PathVariable Long numSubscription) {
         subscriptionServices.removeSubscription(numSubscription);
         return subscriptionServices.retrieveSubscription(numSubscription);
     }

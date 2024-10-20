@@ -20,7 +20,7 @@ public class RegistrationRestController {
     }
 
     @GetMapping("/get/{numRegistration}")
-    public Registration getRegistration(Long numRegistration) {
+    public Registration getRegistration(@PathVariable Long numRegistration) {
         return registrationServices.retrieveRegistration(numRegistration);
     }
 
@@ -34,8 +34,8 @@ public class RegistrationRestController {
         return registrationServices.updateRegistration(registration);
     }
 
-    @DeleteMapping("/delete")
-    public Registration deleteRegistration(Long numRegistration) {
+    @DeleteMapping("/delete/{numRegistration}")
+    public Registration deleteRegistration(@PathVariable Long numRegistration) {
         registrationServices.removeRegistration(numRegistration);
         return registrationServices.retrieveRegistration(numRegistration);
     }

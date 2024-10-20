@@ -22,7 +22,7 @@ public class PisteRestController {
     }
 
     @GetMapping("/get/{numPiste}")
-    public Piste getPiste(Long numPiste) {
+    public Piste getPiste(@PathVariable Long numPiste) {
         return pisteServices.retrievePiste(numPiste);
     }
 
@@ -36,8 +36,8 @@ public class PisteRestController {
         return pisteServices.updatePiste(piste);
     }
 
-    @DeleteMapping("/delete")
-    public Piste deletePiste(Long numPiste) {
+    @DeleteMapping("/delete/{numPiste}")
+    public Piste deletePiste(@PathVariable Long numPiste) {
         pisteServices.removePiste(numPiste);
         return pisteServices.retrievePiste(numPiste);
     }

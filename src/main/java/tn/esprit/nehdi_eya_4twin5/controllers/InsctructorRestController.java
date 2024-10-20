@@ -13,19 +13,30 @@ import java.util.List;
 @RestController
 public class InsctructorRestController {
     private final IInstructorServices instructorServices;
+
     @PostMapping("/add")
     public Instructor addInstructor(@RequestBody Instructor instructor) {
-        return instructorServices.addInstructor(instructor);}
+        return instructorServices.addInstructor(instructor);
+    }
+
     @GetMapping("/get/{numInstructor}")
-    public Instructor getInstructor(Long numInstructor) {return instructorServices.retrieveInstructor(numInstructor);}
+    public Instructor getInstructor(@PathVariable Long numInstructor) {
+        return instructorServices.retrieveInstructor(numInstructor);
+    }
+
     @GetMapping("/get")
-    public List<Instructor> getInstructors(){return instructorServices.retrieveAll();}
+    public List<Instructor> getInstructors() {
+        return instructorServices.retrieveAll();
+    }
+
     @PutMapping("/update/{instructor}")
     public Instructor updateInstructor(@RequestBody Instructor instructor) {
-        return instructorServices.updateInstructor(instructor);}
-    @DeleteMapping("/delete")
-    public Instructor deleteInstructor(Long numInstructor) {
-         instructorServices.removeInstructor(numInstructor);
+        return instructorServices.updateInstructor(instructor);
+    }
+
+    @DeleteMapping("/delete/{numInstructor}")
+    public Instructor deleteInstructor(@PathVariable Long numInstructor) {
+        instructorServices.removeInstructor(numInstructor);
         return instructorServices.retrieveInstructor(numInstructor);
     }
 
