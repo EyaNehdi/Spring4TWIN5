@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.nehdi_eya_4twin5.entities.Skier;
 import tn.esprit.nehdi_eya_4twin5.services.ISkierServices;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -37,5 +38,17 @@ public class SkierRestController {
     @DeleteMapping("/delete/{numSkier}")
     public void deleteSkier(@PathVariable Long numSkier) {
         skierService.removeSkier(numSkier);
+    }
+    @PutMapping("/assignToPiste/{numSkier}/{numPiste}")
+    public void assignSkier(@PathVariable Long numSkier,@PathVariable Long numPiste) {
+        skierService.assignSkierToPiste(numSkier, numPiste);
+    }
+    @GetMapping("/get/{firstName}/{lastName}")
+    public Skier getByFLname(@PathVariable String firstName, @PathVariable String lastName) {
+        return skierService.getByFirstAndLastName(firstName, lastName);
+    }
+    @GetMapping("/getByDob/{dob}")
+    public List<Skier> getByDob(@PathVariable  LocalDate dob) {
+        return skierService.getByDateOfBirth(dob);
     }
 }

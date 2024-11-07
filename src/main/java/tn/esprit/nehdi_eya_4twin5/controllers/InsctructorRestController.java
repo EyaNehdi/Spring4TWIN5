@@ -29,15 +29,15 @@ public class InsctructorRestController {
         return instructorServices.retrieveAll();
     }
 
-    @PutMapping("/update/{instructor}")
+    @PutMapping("/update")
     public Instructor updateInstructor(@RequestBody Instructor instructor) {
         return instructorServices.updateInstructor(instructor);
     }
 
     @DeleteMapping("/delete/{numInstructor}")
-    public Instructor deleteInstructor(@PathVariable Long numInstructor) {
+    public void deleteInstructor(@PathVariable Long numInstructor) {
         instructorServices.removeInstructor(numInstructor);
-        return instructorServices.retrieveInstructor(numInstructor);
+
     }
 
 }

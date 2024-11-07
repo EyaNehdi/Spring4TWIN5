@@ -3,8 +3,10 @@ package tn.esprit.nehdi_eya_4twin5.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import tn.esprit.nehdi_eya_4twin5.entities.Color;
 import tn.esprit.nehdi_eya_4twin5.entities.Piste;
 
+import tn.esprit.nehdi_eya_4twin5.entities.Skier;
 import tn.esprit.nehdi_eya_4twin5.services.IPisteServices;
 
 import java.util.List;
@@ -31,14 +33,18 @@ public class PisteRestController {
         return pisteServices.retrieveAll();
     }
 
-    @PutMapping("/update/{piste}")
+    @PutMapping("/update")
     public Piste updatePiste(@RequestBody Piste piste) {
         return pisteServices.updatePiste(piste);
     }
 
     @DeleteMapping("/delete/{numPiste}")
-    public Piste deletePiste(@PathVariable Long numPiste) {
+    public void deletePiste(@PathVariable Long numPiste) {
         pisteServices.removePiste(numPiste);
-        return pisteServices.retrievePiste(numPiste);
+
+    }
+    @PutMapping("/assignSkier/piste/{fname}/{lname}/{color}")
+    public Skier assignSkierToPiste (@PathVariable String fname,@PathVariable String lname, @PathVariable Color color){
+        return pisteServices.assignSkierToPiste(fname, lname, color);
     }
 }

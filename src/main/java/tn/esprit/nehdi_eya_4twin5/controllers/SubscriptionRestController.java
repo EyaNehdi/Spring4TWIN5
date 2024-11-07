@@ -30,14 +30,14 @@ public class SubscriptionRestController {
         return subscriptionServices.retrieveAll();
     }
 
-    @PutMapping("/update/{subscription}")
+    @PutMapping("/update")
     public Subscription updateSubscription(@RequestBody Subscription subscription) {
         return subscriptionServices.updateSubscription(subscription);
     }
 
     @DeleteMapping("/delete/{numSubscription}")
-    public Subscription deleteSubscription(@PathVariable Long numSubscription) {
+    public void deleteSubscription(@PathVariable Long numSubscription) {
         subscriptionServices.removeSubscription(numSubscription);
-        return subscriptionServices.retrieveSubscription(numSubscription);
+
     }
 }

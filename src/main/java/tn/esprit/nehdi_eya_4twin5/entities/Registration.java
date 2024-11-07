@@ -1,5 +1,6 @@
 package tn.esprit.nehdi_eya_4twin5.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -17,9 +18,10 @@ public class Registration implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      Long numRegistration;
      int numWeek;
+     @JsonIgnore
     @ManyToOne
     Skier skier;
-
+@JsonIgnore
     @ManyToOne
     Course course;
 }

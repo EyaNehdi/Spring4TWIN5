@@ -29,14 +29,22 @@ public class RegistrationRestController {
         return registrationServices.retrieveAll();
     }
 
-    @PutMapping("/update/{registration}")
+    @PutMapping("/update")
     public Registration updateRegistration(@RequestBody Registration registration) {
         return registrationServices.updateRegistration(registration);
     }
 
     @DeleteMapping("/delete/{numRegistration}")
-    public Registration deleteRegistration(@PathVariable Long numRegistration) {
+    public void deleteRegistration(@PathVariable Long numRegistration) {
         registrationServices.removeRegistration(numRegistration);
-        return registrationServices.retrieveRegistration(numRegistration);
+
+    }
+    @PostMapping("/addR/{numSkier}")
+    public Registration addRegistrationAndAssignToSkier(@RequestBody Registration registration, @PathVariable Long numSkier){
+        return registrationServices.addRegistrationAndAssignToSkier(registration, numSkier);
+    }
+    @PostMapping("/addR/course/{numCourse}")
+    public Registration assignRegistrationToCourse(@RequestBody Registration registration,@PathVariable Long numCourse){
+        return registrationServices.assignRegistrationToCourse(registration, numCourse);
     }
 }

@@ -28,14 +28,14 @@ public class CourseRestController {
         return courseServices.retrieveAll();
     }
 
-    @PutMapping("/update/{course}")
+    @PutMapping("/update")
     public Course updateCourse(@RequestBody Course course) {
         return courseServices.updateCourse(course);
     }
 
     @DeleteMapping("/delete/{numCourse}")
-    public Course deleteCourse(@PathVariable Long numCourse) {
+    public void deleteCourse(@PathVariable Long numCourse) {
         courseServices.removeCourse(numCourse);
-        return getCourse(numCourse);
+
     }
 }

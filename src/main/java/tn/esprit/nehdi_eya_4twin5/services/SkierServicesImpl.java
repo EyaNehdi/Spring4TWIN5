@@ -1,13 +1,20 @@
 package tn.esprit.nehdi_eya_4twin5.services;
 
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
+import tn.esprit.nehdi_eya_4twin5.entities.Piste;
 import tn.esprit.nehdi_eya_4twin5.entities.Skier;
+import tn.esprit.nehdi_eya_4twin5.entities.Subscription;
 import tn.esprit.nehdi_eya_4twin5.repositories.IPisteRepository;
 import tn.esprit.nehdi_eya_4twin5.repositories.ISkierRepository;
+import tn.esprit.nehdi_eya_4twin5.repositories.ISubscriptionRepository;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
@@ -15,10 +22,17 @@ public class SkierServicesImpl implements ISkierServices {
 
 
     private final  ISkierRepository skierRepository;
+    private final IPisteRepository pisteRepository;
+   // private final ISubscriptionRepository subscriptionRepository;
+
 
 @Override
     public  Skier addSkier(Skier skier) {
-        return skierRepository.save(skier);
+    //In case we dont put CASCADE persist parameter
+//    Subscription subscription = skier.getSubscription();
+//    subscriptionRepository.save(subscription);
+//    skier.setSubscription(subscription);
+    return skierRepository.save(skier);
     }
 
 
@@ -40,6 +54,26 @@ public class SkierServicesImpl implements ISkierServices {
     @Override
     public void removeSkier(Long numSkier) {
     skierRepository.deleteById(numSkier);
+    }
+
+    @Override
+    public void assignSkierToPiste(Long numSkier, Long numPiste) {
+
+        Skier skier = skierRepository.findById(numSkier)
+                .orElse(null);
+        Piste piste = pisteRepository.findById(numPiste)
+                .orElse(null);
+        piste.getSkiers().add(skier);
+        pisteRepository.save(piste);
+    }
+    @Override
+    public Skier getByFirstAndLastName(String firstName, String lastName) {
+    return skierRepository.findByFirstNameAndLastName(firstName,lastName);
+    }
+
+    @Override
+    public List<Skier> getByDateOfBirth(LocalDate dob) {
+        return skierRepository.findByDateOfBirth(dob);
     }
 
 }
