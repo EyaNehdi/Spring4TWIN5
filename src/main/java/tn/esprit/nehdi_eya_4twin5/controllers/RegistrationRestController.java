@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import tn.esprit.nehdi_eya_4twin5.entities.Registration;
 
+import tn.esprit.nehdi_eya_4twin5.entities.Skier;
 import tn.esprit.nehdi_eya_4twin5.services.IRegistrationServices;
 
 import java.util.List;
@@ -59,5 +60,10 @@ public class RegistrationRestController {
     @PostMapping("/addR/course/{numCourse}")
     public Registration assignRegistrationToCourse(@RequestBody Registration registration, @PathVariable Long numCourse) {
         return registrationServices.assignRegistrationToCourse(registration, numCourse);
+    }
+    @PostMapping("/addSkier/AssignCourse/{numCourse}")
+    public Skier addSkierAndAssignToCourse(@RequestBody Skier skier,@PathVariable Long numCourse){
+
+        return registrationServices.addSkierAndAssignToCourse(skier, numCourse);
     }
 }

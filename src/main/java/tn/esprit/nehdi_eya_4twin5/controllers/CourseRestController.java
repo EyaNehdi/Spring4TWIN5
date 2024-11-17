@@ -2,14 +2,12 @@ package tn.esprit.nehdi_eya_4twin5.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.tags.Tags;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.nehdi_eya_4twin5.entities.Course;
 import tn.esprit.nehdi_eya_4twin5.services.ICourseServices;
 
 import java.util.List;
-
 @Tag(name = "Gestion Course")
 @RequiredArgsConstructor
 @RequestMapping("course")

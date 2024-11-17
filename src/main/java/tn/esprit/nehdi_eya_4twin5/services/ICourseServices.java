@@ -1,6 +1,7 @@
 package tn.esprit.nehdi_eya_4twin5.services;
 
 import tn.esprit.nehdi_eya_4twin5.entities.Course;
+import tn.esprit.nehdi_eya_4twin5.entities.TypeCourse;
 
 
 import java.util.List;
