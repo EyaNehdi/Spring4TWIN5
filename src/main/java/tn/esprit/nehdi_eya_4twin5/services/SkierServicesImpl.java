@@ -6,15 +6,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.nehdi_eya_4twin5.entities.Piste;
 import tn.esprit.nehdi_eya_4twin5.entities.Skier;
-import tn.esprit.nehdi_eya_4twin5.entities.Subscription;
+import tn.esprit.nehdi_eya_4twin5.entities.TypeSubscription;
 import tn.esprit.nehdi_eya_4twin5.repositories.IPisteRepository;
 import tn.esprit.nehdi_eya_4twin5.repositories.ISkierRepository;
-import tn.esprit.nehdi_eya_4twin5.repositories.ISubscriptionRepository;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
@@ -74,6 +71,14 @@ public class SkierServicesImpl implements ISkierServices {
     @Override
     public List<Skier> getByDateOfBirth(LocalDate dob) {
         return skierRepository.findByDateOfBirth(dob);
+    }
+
+
+    @Override
+    public List<Skier> retrieveSkiersBySubscriptionType(TypeSubscription subscriptionType) {
+
+    return  skierRepository.findBySubscription(subscriptionType);
+
     }
 
 }

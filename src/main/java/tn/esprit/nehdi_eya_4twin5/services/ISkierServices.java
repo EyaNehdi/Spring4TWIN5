@@ -2,6 +2,7 @@ package tn.esprit.nehdi_eya_4twin5.services;
 
 
 import tn.esprit.nehdi_eya_4twin5.entities.Skier;
+import tn.esprit.nehdi_eya_4twin5.entities.TypeSubscription;
 
 import java.time.LocalDate;
 
@@ -16,4 +17,6 @@ public interface ISkierServices {
     void assignSkierToPiste(Long numSkier, Long numPiste);
     Skier getByFirstAndLastName(String firstName, String lastName);
     List<Skier> getByDateOfBirth(LocalDate dob);
+
+    List<Skier> retrieveSkiersBySubscriptionType(TypeSubscription subscriptionType);
 }
