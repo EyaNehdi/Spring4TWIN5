@@ -1,7 +1,9 @@
 package tn.esprit.nehdi_eya_4twin5.services;
 
 
+import org.springframework.data.repository.query.Param;
 import tn.esprit.nehdi_eya_4twin5.entities.Skier;
+import tn.esprit.nehdi_eya_4twin5.entities.TypeCourse;
 import tn.esprit.nehdi_eya_4twin5.entities.TypeSubscription;
 
 import java.time.LocalDate;
@@ -19,4 +21,5 @@ public interface ISkierServices {
     List<Skier> getByDateOfBirth(LocalDate dob);
 
     List<Skier> retrieveSkiersBySubscriptionType(TypeSubscription subscriptionType);
+    List<Skier> getSkierByTypeCourse(TypeCourse typeCourse);
 }

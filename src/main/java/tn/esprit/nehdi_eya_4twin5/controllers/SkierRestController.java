@@ -5,6 +5,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.nehdi_eya_4twin5.entities.Skier;
+import tn.esprit.nehdi_eya_4twin5.entities.TypeCourse;
+import tn.esprit.nehdi_eya_4twin5.entities.TypeSubscription;
 import tn.esprit.nehdi_eya_4twin5.services.ISkierServices;
 
 import java.time.LocalDate;
@@ -55,5 +57,15 @@ public class SkierRestController {
     @GetMapping("/getByDob/{dob}")
     public List<Skier> getByDob(@PathVariable  LocalDate dob) {
         return skierService.getByDateOfBirth(dob);
+    }
+    @Operation(description = "Récupérer Skier par subscription")
+    @GetMapping("/getskier/subscription/{subscriptionType}")
+    List<Skier> retrieveSkiersBySubscriptionType(@PathVariable TypeSubscription subscriptionType){
+        return skierService.retrieveSkiersBySubscriptionType(subscriptionType);
+    }
+    @Operation(description = "Récupérer Skier par course")
+    @GetMapping("/getskier/cours/{typeCourse}")
+    List<Skier> getSkierByTypeCourse(@PathVariable TypeCourse typeCourse){
+        return skierService.getSkierByTypeCourse(typeCourse);
     }
 }

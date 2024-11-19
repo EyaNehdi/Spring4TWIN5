@@ -40,7 +40,7 @@ public class SubscriptionServicesImpl implements ISubscriptionServices{
 subscriptionRepository.deleteById(numSubscription);
     }
 
-    @Query("SELECT s FROM Skier s WHERE s.subscription.typeSub = :subscriptionType ORDER BY s.subscription.startDate ASC")
+
     @Override
     public Set<Subscription> getSubscriptionByType(@Param("subscriptionType")TypeSubscription type) {
         return subscriptionRepository.findByTypeSubscription(type);

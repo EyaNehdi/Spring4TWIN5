@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.nehdi_eya_4twin5.entities.Piste;
 import tn.esprit.nehdi_eya_4twin5.entities.Skier;
+import tn.esprit.nehdi_eya_4twin5.entities.TypeCourse;
 import tn.esprit.nehdi_eya_4twin5.entities.TypeSubscription;
 import tn.esprit.nehdi_eya_4twin5.repositories.IPisteRepository;
 import tn.esprit.nehdi_eya_4twin5.repositories.ISkierRepository;
@@ -79,6 +80,11 @@ public class SkierServicesImpl implements ISkierServices {
 
     return  skierRepository.findBySubscription(subscriptionType);
 
+    }
+
+    @Override
+    public List<Skier> getSkierByTypeCourse(TypeCourse typeCourse) {
+        return skierRepository.getSkierByTypeCourse(typeCourse);
     }
 
 }
