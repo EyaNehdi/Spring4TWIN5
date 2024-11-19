@@ -15,6 +15,7 @@ import java.util.List;
 public interface ISkierRepository extends CrudRepository<Skier, Long> {
     Skier findByFirstNameAndLastName(String fname,String lname);
     List<Skier> findByDateOfBirth(LocalDate dob);
+    @Query("SELECT s FROM Skier s WHERE s.subscription.typeSub = :subscriptionType ORDER BY s.subscription.startDate ASC")
     List<Skier> findBySubscription(TypeSubscription typeSubscription);
     @Query("select s from Skier s join s.registrations registration where registration.course.typeCourse=:typeCourse ")
     List<Skier> getSkierByTypeCourse(@Param("typeCourse") TypeCourse typeCourse);
